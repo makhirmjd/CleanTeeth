@@ -1,26 +1,23 @@
-﻿namespace CleanTeeth.Domain.Entities;
+﻿using CleanTeeth.Domain.ValueObjects;
+
+namespace CleanTeeth.Domain.Entities;
 
 public class Dentist
 {
-    public Guid Id { get; private set; }
+    public Guid Id { get; }
     public string Name { get; private set; } = default!;
-    public string Email { get; private set; } = default!;
+    public Email Email { get; private set; } = default!;
 
-    public Dentist(string name, string email)
+    public Dentist(string name, Email email)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new Exceptions.BusinessRuleException($"The {nameof(name)} is required");
         }
 
-        if (string.IsNullOrWhiteSpace(email))
+        if (email is null)
         {
             throw new Exceptions.BusinessRuleException($"The {nameof(email)} is required");
-        }
-
-        if (!email.Contains('@'))
-        {
-            throw new Exceptions.BusinessRuleException($"The {nameof(email)} is not valid");
         }
 
         Id = Guid.CreateVersion7();

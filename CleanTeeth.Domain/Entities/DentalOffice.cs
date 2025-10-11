@@ -2,7 +2,7 @@
 
 public class DentalOffice
 {
-    public Guid Id { get; private set; }
+    public Guid Id { get; }
     public string Name { get; private set; } = default!;
 
     public DentalOffice(string name)
