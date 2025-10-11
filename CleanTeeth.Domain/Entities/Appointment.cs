@@ -1,28 +1,28 @@
 ﻿using CleanTeeth.Domain.Entities.Enums;
+using CleanTeeth.Domain.ValueObjects;
 
 namespace CleanTeeth.Domain.Entities;
 
 public class Appointment
 {
-    public Guid Id { get; private set; }
+    public Guid Id { get; }
     public Guid PatientId { get; private set; }
     public Guid DentistId { get; private set; }
     public Guid DentalOfficeId { get; private set; }
     public AppointmentStatus Status { get; private set; }
-    public DateTime StartTime { get; private set; }
-    public DateTime EndTime { get; private set; }
+    public TimeInterval TimeInterval { get; private set; }
     public Patient? Patient { get; private set; }
     public Dentist? Dentist { get; private set; }
     public DentalOffice? DentalOffice { get; private set; }
 
-    public Appointment(Guid patientId, Guid dentistId, Guid dentalOfficeId, DateTime startTime, DateTime endTime)
+    public Appointment(Guid patientId, Guid dentistId, Guid dentalOfficeId, TimeInterval timeInterval)
     {
-        if (startTime > endTime)
+        if (timeInterval is null)
         {
-            throw new Exceptions.BusinessRuleException("The start time cannot be after the end time of the appointment");
+            throw new Exceptions.BusinessRuleException("The time interval is required");
         }
 
-        if (startTime < DateTime.UtcNow)
+        if (timeInterval.Start < DateTimeOffset.UtcNow)
         {
             throw new Exceptions.BusinessRuleException("The start time cannot be in the past");
         }
@@ -31,8 +31,7 @@ public class Appointment
         PatientId = patientId;
         DentistId = dentistId;
         DentalOfficeId = dentalOfficeId;
-        StartTime = startTime;
-        EndTime = endTime;
+        TimeInterval = timeInterval;
         Status = AppointmentStatus.Scheduled;
     }
 
