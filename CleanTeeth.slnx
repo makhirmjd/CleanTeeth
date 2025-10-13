@@ -6,6 +6,6 @@
   </Folder>
   <Folder Name="/Infrastructure/" />
   <Folder Name="/Tests/">
-    <Project Path="CleanTeeth.Test/CleanTeeth.Test.csproj" Id="c66f8ac5-a26d-4917-9d8d-d914dd1e5311" />
+    <Project Path="CleanTeeth.Test/CleanTeeth.Tests.csproj" Id="c66f8ac5-a26d-4917-9d8d-d914dd1e5311" />
   </Folder>
 </Solution>
