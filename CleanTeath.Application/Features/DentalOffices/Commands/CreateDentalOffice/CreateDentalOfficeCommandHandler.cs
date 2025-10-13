@@ -1,5 +1,6 @@
 ﻿using CleanTeath.Application.Contracts.Persistence;
 using CleanTeath.Application.Contracts.Repositories;
+using CleanTeath.Application.Exceptions;
 using CleanTeeth.Domain.Entities;
 using FluentValidation;
 using FluentValidation.Results;
@@ -13,7 +14,7 @@ public class CreateDentalOfficeCommandHandler(IDentalOfficeRepository repository
         ValidationResult validationResult = await validator.ValidateAsync(command, cancellationToken);
         if (!validationResult.IsValid)
         {
-           // What should we do?
+            throw new CustomValidationException(validationResult);
         }
 
         DentalOffice dentalOffice = new(command.Name);
