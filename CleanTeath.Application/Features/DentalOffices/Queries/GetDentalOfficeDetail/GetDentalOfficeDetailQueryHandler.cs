@@ -15,11 +15,6 @@ public class GetDentalOfficeDetailQueryHandler(IDentalOfficeRepository repositor
         {
             throw new NotFoundException();
         }
-        var dto = new DentalOfficeDetailDto 
-        { 
-            Id = dentalOffice.Id,
-            Name = dentalOffice.Name 
-        };
-        return dto;
+        return dentalOffice.ToDto();
     }
 }
