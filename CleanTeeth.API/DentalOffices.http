@@ -1,6 +1,6 @@
-@CleanTeeth.API_HostAddress = http://localhost:5123/api/dentalOffices
+@DentalOffices_HostAddress = http://localhost:5123/api/dentalOffices
 
-POST {{CleanTeeth.API_HostAddress}}
+POST {{DentalOffices_HostAddress}}
 Content-Type: application/json
 
 {
