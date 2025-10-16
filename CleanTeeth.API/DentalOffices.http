@@ -1,5 +1,8 @@
 @DentalOffices_HostAddress = http://localhost:5123/api/dentalOffices
 
+GET {{DentalOffices_HostAddress}}/0199ED58-CD55-79D5-83BC-553367E958C8
+ACCEPT: application/json
+
 POST {{DentalOffices_HostAddress}}
 Content-Type: application/json
 
