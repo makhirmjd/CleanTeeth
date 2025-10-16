@@ -1,6 +1,0 @@
-@CleanTeeth.API_HostAddress = http://localhost:5123
-
-GET {{CleanTeeth.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
