@@ -1,0 +1,10 @@
+@DentalOffices_HostAddress = http://localhost:5123/api/dentalOffices
+
+POST {{DentalOffices_HostAddress}}
+Content-Type: application/json
+
+{
+  "name": "Dental Office A"
+}
+
+###
