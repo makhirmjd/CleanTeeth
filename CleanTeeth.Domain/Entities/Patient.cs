@@ -4,7 +4,7 @@ namespace CleanTeeth.Domain.Entities;
 
 public class Patient
 {
-    public Guid Id { get; }
+    public Guid Id { get; private set; }
     public string Name { get; private set; } = default!;
     public Email Email { get; private set; } = default!;
 

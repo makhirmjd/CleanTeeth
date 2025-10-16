@@ -5,7 +5,7 @@ namespace CleanTeeth.Domain.Entities;
 
 public class Appointment
 {
-    public Guid Id { get; }
+    public Guid Id { get; private set; }
     public Guid PatientId { get; private set; }
     public Guid DentistId { get; private set; }
     public Guid DentalOfficeId { get; private set; }
