@@ -1,5 +1,7 @@
 <Solution>
-  <Folder Name="/API/" />
+  <Folder Name="/API/">
+    <Project Path="CleanTeeth.API/CleanTeeth.API.csproj" Id="f6b2a55b-df6d-4282-af94-ae9379fbd43c" />
+  </Folder>
   <Folder Name="/Core/">
     <Project Path="CleanTeath.Application/CleanTeath.Application.csproj" Id="cae81f2e-fcc5-4e0c-90ed-7b570376108d" />
     <Project Path="CleanTeeth.Domain/CleanTeeth.Domain.csproj" Id="f86a96e7-4a93-47b2-a17f-ebce59687ce8" />
