@@ -1,4 +1,5 @@
 using CleanTeath.Application;
+using CleanTeeth.API.Middlewares;
 using CleanTeeth.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddApplicationServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseCustomExceptionHandler();
 
 app.UseHttpsRedirection();
 
