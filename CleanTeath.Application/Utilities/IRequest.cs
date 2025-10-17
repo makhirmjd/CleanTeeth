@@ -3,3 +3,7 @@
 public interface IRequest<TResponse>
 {
 }
+
+public interface IRequest
+{
+}
