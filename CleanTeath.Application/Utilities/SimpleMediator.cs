@@ -10,6 +10,30 @@ public class SimpleMediator(IServiceProvider serviceProvider) : IMediator
 {
     public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request)
     {
+        await ApplyValidations(request);
+
+        Type handlerType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
+        object handler = 
+            serviceProvider.GetService(handlerType) ?? 
+            throw new MediatorException($"Handler was not found for {request.GetType().Name}");
+        MethodInfo method = handlerType.GetMethod("Handle") ?? throw new MediatorException("Handle method was not found");
+        return await (Task<TResponse>)method.Invoke(handler, [request])!;
+    }
+
+    public async Task Send(IRequest request)
+    {
+        await ApplyValidations(request);
+
+        Type handlerType = typeof(IRequestHandler<>).MakeGenericType(request.GetType());
+        object handler =
+            serviceProvider.GetService(handlerType) ??
+            throw new MediatorException($"Handler was not found for {request.GetType().Name}");
+        MethodInfo method = handlerType.GetMethod("Handle") ?? throw new MediatorException("Handle method was not found");
+        await (Task)method.Invoke(handler, [request])!;
+    }
+
+    private async Task ApplyValidations(object request)
+    {
         Type validatorType = typeof(IValidator<>).MakeGenericType(request.GetType());
         object? validator = serviceProvider.GetService(validatorType);
 
@@ -32,12 +56,5 @@ public class SimpleMediator(IServiceProvider serviceProvider) : IMediator
                 }
             }
         }
-
-        Type handlerType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
-        object handler = 
-            serviceProvider.GetService(handlerType) ?? 
-            throw new MediatorException($"Handler was not found for {request.GetType().Name}");
-        MethodInfo method = handlerType.GetMethod("Handle") ?? throw new MediatorException("Handle method was not found");
-        return await (Task<TResponse>)method.Invoke(handler, [request])!;
     }
 }
