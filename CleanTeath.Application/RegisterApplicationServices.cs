@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.DentalOffices.Commands.CreateDentalOffice;
+using CleanTeath.Application.Features.DentalOffices.Commands.UpdateDentalOffice;
 using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficeDetail;
 using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;
 using CleanTeath.Application.Utilities;
@@ -14,6 +15,7 @@ public static class RegisterApplicationServices
         services.AddScoped<IRequestHandler<CreateDentalOfficeCommand, Guid>, CreateDentalOfficeCommandHandler>();
         services.AddScoped<IRequestHandler<GetDentalOfficeDetailQuery, DentalOfficeDetailDto>, GetDentalOfficeDetailQueryHandler>();
         services.AddScoped<IRequestHandler<GetDentalOfficesListQuery, List<DentalOfficesListDto>>, GetDentalOfficesListQueryHandler>();
+        services.AddScoped<IRequestHandler<UpdateDentalOfficeCommand>, UpdateDentalOfficeCommandHandler>();
         return services;
     }
 }
