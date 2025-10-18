@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CleanTeeth.API.Dtos;
+namespace CleanTeeth.API.Dtos.DentalOffices;
 
 public class CreateDentalOfficeDto
 {

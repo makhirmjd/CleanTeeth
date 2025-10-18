@@ -20,3 +20,12 @@ Content-Type: application/json
 }
 
 ###
+
+PUT {{DentalOffices_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+Content-Type: application/json
+
+{
+  "name": "Dental Office A - Updated"
+}
+
+###
