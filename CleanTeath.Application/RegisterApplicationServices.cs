@@ -1,9 +1,4 @@
-﻿using CleanTeath.Application.Features.DentalOffices.Commands.CreateDentalOffice;
-using CleanTeath.Application.Features.DentalOffices.Commands.DeleteDentalOffice;
-using CleanTeath.Application.Features.DentalOffices.Commands.UpdateDentalOffice;
-using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficeDetail;
-using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;
-using CleanTeath.Application.Utilities;
+﻿using CleanTeath.Application.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanTeath.Application;
@@ -13,11 +8,15 @@ public static class RegisterApplicationServices
     public static IServiceCollection AddApplicationServices(this IServiceCollection services) 
     {
         services.AddTransient<IMediator, SimpleMediator>();
-        services.AddScoped<IRequestHandler<CreateDentalOfficeCommand, Guid>, CreateDentalOfficeCommandHandler>();
-        services.AddScoped<IRequestHandler<GetDentalOfficeDetailQuery, DentalOfficeDetailDto>, GetDentalOfficeDetailQueryHandler>();
-        services.AddScoped<IRequestHandler<GetDentalOfficesListQuery, List<DentalOfficesListDto>>, GetDentalOfficesListQueryHandler>();
-        services.AddScoped<IRequestHandler<UpdateDentalOfficeCommand>, UpdateDentalOfficeCommandHandler>();
-        services.AddScoped<IRequestHandler<DeleteDentalOfficeCommand>, DeleteDentalOfficeCommandHandler>();
+
+        services.Scan(scan => scan
+            .FromAssembliesOf(typeof(RegisterApplicationServices))
+            .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime()
+            .AddClasses(classes => classes.AssignableTo(typeof(IRequestHandler<,>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
         return services;
     }
 }
