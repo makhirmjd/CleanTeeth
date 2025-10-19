@@ -16,7 +16,7 @@ POST {{DentalOffices_HostAddress}}
 Content-Type: application/json
 
 {
-  "name": "Dental Office B"
+  "name": "Dental Office C"
 }
 
 ###
@@ -27,5 +27,9 @@ Content-Type: application/json
 {
   "name": "Dental Office A - Updated"
 }
+
+###
+
+DELETE {{DentalOffices_HostAddress}}/0199fb14-64c7-7cad-8262-b9e88c12b909
 
 ###
