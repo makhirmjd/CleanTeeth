@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.DentalOffices.Commands.CreateDentalOffice;
+using CleanTeath.Application.Features.DentalOffices.Commands.DeleteDentalOffice;
 using CleanTeath.Application.Features.DentalOffices.Commands.UpdateDentalOffice;
 using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficeDetail;
 using CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;
@@ -41,6 +42,14 @@ public class DentalOfficesController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> Put(Guid id, UpdateDentalOfficeDto updateDentalOfficeDto)
     {
         var command = new UpdateDentalOfficeCommand { Id = id, Name = updateDentalOfficeDto.Name };
+        await mediator.Send(command);
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var command = new DeleteDentalOfficeCommand { Id = id };
         await mediator.Send(command);
         return NoContent();
     }
