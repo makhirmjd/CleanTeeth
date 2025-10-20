@@ -2,7 +2,10 @@
 
 public record Email
 {
-    public string Value { get; }
+    public string Value { get; } = default!;
+
+    private Email() { }
+
     public Email(string email)
     {
         if (string.IsNullOrWhiteSpace(email))

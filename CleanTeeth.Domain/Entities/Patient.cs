@@ -8,6 +8,8 @@ public class Patient
     public string Name { get; private set; } = default!;
     public Email Email { get; private set; } = default!;
 
+    private Patient() { }
+
     public Patient(string name, Email email)
     {
         if (string.IsNullOrWhiteSpace(name))

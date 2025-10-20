@@ -6,6 +6,7 @@ namespace CleanTeeth.Persistence;
 public class CleanTeethDbContext(DbContextOptions<CleanTeethDbContext> options) : DbContext(options)
 {
     public DbSet<DentalOffice> DentalOffices => Set<DentalOffice>();
+    public DbSet<Patient> Patients => Set<Patient>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
