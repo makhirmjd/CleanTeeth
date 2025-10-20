@@ -13,7 +13,13 @@ public static class RegisterPersistenceServices
     {
         services.AddDbContext<CleanTeethDbContext>(options =>
             options.UseSqlServer("name=CleanTeethConnectionString"));
-        services.AddScoped<IDentalOfficeRepository, DentalOfficeRepository>();
+
+        services.Scan(scan =>
+            scan.FromAssembliesOf(typeof(RegisterPersistenceServices))
+            .AddClasses(classes => classes.AssignableTo(typeof(IRepository<>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
         services.AddScoped<IUnitOfWork, EfCoreUnitOfWork>();
         return services;
     }
