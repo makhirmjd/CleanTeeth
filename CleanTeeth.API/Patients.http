@@ -1,0 +1,36 @@
+@Patients_HostAddress = http://localhost:5123/api/patients
+
+GET {{Patients_HostAddress}}
+ACCEPT: application/json
+
+
+###
+
+GET {{Patients_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+ACCEPT: application/json
+
+
+###
+
+POST {{Patients_HostAddress}}
+Content-Type: application/json
+
+{
+  "name": "Felipe Gavilan",
+  "email": "felipe@example.com"
+}
+
+###
+
+PUT {{Patients_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+Content-Type: application/json
+
+{
+  "name": "Dental Office A - Updated"
+}
+
+###
+
+DELETE {{Patients_HostAddress}}/0199fb14-64c7-7cad-8262-b9e88c12b909
+
+###
