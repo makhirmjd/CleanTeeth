@@ -2,7 +2,7 @@
 
 namespace CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficeDetail;
 
-public static class MapperExtensions
+public static partial class MapperExtensions
 {
     public static DentalOfficeDetailDto ToDto(this DentalOffice dentalOffice) =>
         new()

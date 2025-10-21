@@ -2,7 +2,7 @@
 
 namespace CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;
 
-public static class MapperExtensions
+public static partial class MapperExtensions
 {
     public static DentalOfficesListDto ToDto(this DentalOffice dentalOffice)
     {
