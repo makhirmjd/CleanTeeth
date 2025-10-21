@@ -1,4 +1,4 @@
-﻿namespace CleanTeath.Application.Utilities;
+﻿namespace CleanTeath.Application.Utilities.Mediator;
 
 public interface IRequest<TResponse>
 {

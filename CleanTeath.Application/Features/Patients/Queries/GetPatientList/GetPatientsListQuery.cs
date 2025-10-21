@@ -1,7 +1,8 @@
-﻿using CleanTeath.Application.Utilities;
+﻿using CleanTeath.Application.Utilities.Common;
+using CleanTeath.Application.Utilities.Mediator;
 
 namespace CleanTeath.Application.Features.Patients.Queries.GetPatientList;
 
-public class GetPatientsListQuery : IRequest<List<PatientsListDto>>
+public class GetPatientsListQuery : PatientsFilterDto, IRequest<PaginatedDto<PatientsListDto>>
 {
 }

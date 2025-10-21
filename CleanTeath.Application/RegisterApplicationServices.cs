@@ -1,4 +1,4 @@
-﻿using CleanTeath.Application.Utilities;
+﻿using CleanTeath.Application.Utilities.Mediator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CleanTeath.Application;

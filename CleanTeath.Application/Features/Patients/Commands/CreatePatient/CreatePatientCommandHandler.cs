@@ -1,6 +1,6 @@
 ﻿using CleanTeath.Application.Contracts.Persistence;
 using CleanTeath.Application.Contracts.Repositories;
-using CleanTeath.Application.Utilities;
+using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.Domain.Entities;
 using CleanTeeth.Domain.ValueObjects;
 

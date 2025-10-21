@@ -1,10 +1,9 @@
-﻿
-using CleanTeath.Application.Exceptions;
+﻿using CleanTeath.Application.Exceptions;
 using FluentValidation;
 using FluentValidation.Results;
 using System.Reflection;
 
-namespace CleanTeath.Application.Utilities;
+namespace CleanTeath.Application.Utilities.Mediator;
 
 public class SimpleMediator(IServiceProvider serviceProvider) : IMediator
 {

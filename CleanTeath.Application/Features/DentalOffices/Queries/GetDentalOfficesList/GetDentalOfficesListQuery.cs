@@ -1,4 +1,4 @@
-﻿using CleanTeath.Application.Utilities;
+﻿using CleanTeath.Application.Utilities.Mediator;
 
 namespace CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;
 

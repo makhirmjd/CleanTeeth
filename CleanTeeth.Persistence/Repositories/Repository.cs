@@ -21,6 +21,8 @@ public class Repository<T>(CleanTeethDbContext context) : IRepository<T> where T
 
     public async Task<T?> GetById(Guid id) => await context.Set<T>().FindAsync(id);
 
+    public async Task<int> GetTotalAmountOfRecords() => await context.Set<T>().CountAsync();
+
     public Task Update(T entity)
     {
         context.Update(entity);
