@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.Patients.Commands.CreatePatient;
+using CleanTeath.Application.Features.Patients.Queries.GetPatientList;
 using CleanTeath.Application.Utilities;
 using CleanTeeth.API.Dtos.Patients;
 using Microsoft.AspNetCore.Mvc;
@@ -19,5 +20,13 @@ public class PatientsController(IMediator mediator) : ControllerBase
         };
         Guid id = await mediator.Send(command);
         return Ok(id);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        var query = new GetPatientsListQuery();
+        var result = await mediator.Send(query);
+        return Ok(result);
     }
 }

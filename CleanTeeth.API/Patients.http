@@ -16,8 +16,8 @@ POST {{Patients_HostAddress}}
 Content-Type: application/json
 
 {
-  "name": "Felipe Gavilan",
-  "email": "felipe@example.com"
+  "name": "Claudia Smith",
+  "email": "claudia@example.com"
 }
 
 ###
@@ -32,5 +32,6 @@ Content-Type: application/json
 ###
 
 DELETE {{Patients_HostAddress}}/0199fb14-64c7-7cad-8262-b9e88c12b909
+Content-Type: application/json
 
 ###
