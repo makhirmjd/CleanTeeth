@@ -1,7 +1,8 @@
 ﻿using CleanTeath.Application.Features.Patients.Commands.CreatePatient;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientList;
-using CleanTeath.Application.Utilities;
+using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.API.Dtos.Patients;
+using CleanTeeth.API.Utilities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanTeeth.API.Controllers;
@@ -23,10 +24,10 @@ public class PatientsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] GetPatientsListQuery query)
     {
-        var query = new GetPatientsListQuery();
         var result = await mediator.Send(query);
-        return Ok(result);
+        HttpContext.InsertPaginationInformationInHeader(result.ToMetaData());
+        return Ok(result.Items);
     }
 }

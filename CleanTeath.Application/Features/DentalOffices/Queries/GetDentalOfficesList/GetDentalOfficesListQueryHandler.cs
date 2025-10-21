@@ -1,5 +1,5 @@
 ﻿using CleanTeath.Application.Contracts.Repositories;
-using CleanTeath.Application.Utilities;
+using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.Domain.Entities;
 
 namespace CleanTeath.Application.Features.DentalOffices.Queries.GetDentalOfficesList;

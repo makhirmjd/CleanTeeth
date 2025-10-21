@@ -1,5 +1,6 @@
 ﻿using CleanTeath.Application.Exceptions;
 using CleanTeath.Application.Utilities;
+using CleanTeath.Application.Utilities.Mediator;
 using FluentValidation;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
