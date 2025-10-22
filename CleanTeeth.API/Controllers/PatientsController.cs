@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.Patients.Commands.CreatePatient;
+using CleanTeath.Application.Features.Patients.Queries.GetPatientDetail;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientList;
 using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.API.Dtos.Patients;
@@ -11,6 +12,22 @@ namespace CleanTeeth.API.Controllers;
 [Route("api/[controller]")]
 public class PatientsController(IMediator mediator) : ControllerBase
 {
+    [HttpGet]
+    public async Task<IActionResult> Get([FromQuery] GetPatientsListQuery query)
+    {
+        var result = await mediator.Send(query);
+        HttpContext.InsertPaginationInformationInHeader(result.ToMetaData());
+        return Ok(result.Items);
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> Get(Guid id)
+    {
+        var query = new GetPatientDetailQuery { Id = id };
+        PatientDetailDto result = await mediator.Send(query);
+        return Ok(result);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Post(CreatePatientDto createPatientDto)
     {
@@ -21,13 +38,5 @@ public class PatientsController(IMediator mediator) : ControllerBase
         };
         Guid id = await mediator.Send(command);
         return Ok(id);
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Get([FromQuery] GetPatientsListQuery query)
-    {
-        var result = await mediator.Send(query);
-        HttpContext.InsertPaginationInformationInHeader(result.ToMetaData());
-        return Ok(result.Items);
     }
 }
