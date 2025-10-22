@@ -31,5 +31,24 @@ public class GetPatientListQueryHandlerTests
                 Email email = new(f.Internet.Email(name));
                 return new(name, email);
             }).Generate(10);
+
+        repository.GetFiltered(Arg.Any<PatientsFilterDto>()).Returns(Task.FromResult(patients));
+        repository.GetTotalAmountOfRecords().Returns(Task.FromResult(50));
+        var result = await handler.Handle(query);
+        Assert.AreEqual(50, result.ToMetaData().TotalAmountOfRecords);
+        Assert.HasCount(10, result.Items);
+    }
+
+    [TestMethod]
+    public async Task Handle_WhenThereAreNoPatients_ReturnsEmptyListAndZero()
+    {
+        IEnumerable<Patient> patients = [];
+        repository.GetFiltered(Arg.Any<PatientsFilterDto>()).Returns(Task.FromResult(patients));
+        repository.GetTotalAmountOfRecords().Returns(Task.FromResult(0));
+        var query = new GetPatientsListQuery { Page = 1, RecordsPerPage = 5 };
+        var result = await handler.Handle(query);
+        Assert.AreEqual(0, result.ToMetaData().TotalAmountOfRecords);
+        Assert.IsNotNull(result.Items);
+        Assert.HasCount(0, result.Items);
     }
 }
