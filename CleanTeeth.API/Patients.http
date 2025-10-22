@@ -1,12 +1,12 @@
 @Patients_HostAddress = http://localhost:5123/api/patients
 
-GET {{Patients_HostAddress}}?page=2&recordsPerPage=1
+GET {{Patients_HostAddress}}?page=1&recordsPerPage=10
 ACCEPT: application/json
 
 
 ###
 
-GET {{Patients_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+GET {{Patients_HostAddress}}/019a0cc9-5ad2-7834-951e-12deb189a75a
 ACCEPT: application/json
 
 
@@ -16,8 +16,8 @@ POST {{Patients_HostAddress}}
 Content-Type: application/json
 
 {
-  "name": "Claudia Smith",
-  "email": "claudia@example.com"
+  "name": "Sandra Achums",
+  "email": "sandra@example.com"
 }
 
 ###
