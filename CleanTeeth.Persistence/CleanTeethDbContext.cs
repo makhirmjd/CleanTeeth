@@ -7,6 +7,7 @@ public class CleanTeethDbContext(DbContextOptions<CleanTeethDbContext> options) 
 {
     public DbSet<DentalOffice> DentalOffices => Set<DentalOffice>();
     public DbSet<Patient> Patients => Set<Patient>();
+    public DbSet<Dentist> Dentists => Set<Dentist>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

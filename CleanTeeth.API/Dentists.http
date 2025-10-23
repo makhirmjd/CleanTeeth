@@ -1,0 +1,38 @@
+@Dentists_HostAddress = http://localhost:5123/api/dentists
+
+GET {{Dentists_HostAddress}}?page=1&recordsPerPage=10
+ACCEPT: application/json
+
+
+###
+
+GET {{Dentists_HostAddress}}/019a1156-c850-7601-8669-bdde02d23e82
+ACCEPT: application/json
+
+
+###
+
+POST {{Dentists_HostAddress}}
+Content-Type: application/json
+
+{
+  "name": "Dentist for manipulation",
+  "email": "dentist@example.com"
+}
+
+###
+
+PUT {{Dentists_HostAddress}}/019a1156-c850-7601-8669-bdde02d23e82
+Content-Type: application/json
+
+{
+  "name": "Dentist for manip",
+  "email": "dentist2@example.com"
+}
+
+###
+
+DELETE {{Dentists_HostAddress}}/019a1156-c850-7601-8669-bdde02d23e82
+Content-Type: application/json
+
+###
