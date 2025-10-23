@@ -1,6 +1,6 @@
 @Patients_HostAddress = http://localhost:5123/api/patients
 
-GET {{Patients_HostAddress}}?page=1&recordsPerPage=10
+GET {{Patients_HostAddress}}?page=1&recordsPerPage=10&email=felipe@example.com
 ACCEPT: application/json
 
 
