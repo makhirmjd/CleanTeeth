@@ -16,8 +16,8 @@ POST {{Patients_HostAddress}}
 Content-Type: application/json
 
 {
-  "name": "Sandra Achums",
-  "email": "sandra@example.com"
+  "name": "Patient to be deleted",
+  "email": "deleted@example.com"
 }
 
 ###
@@ -32,7 +32,7 @@ Content-Type: application/json
 
 ###
 
-DELETE {{Patients_HostAddress}}/0199fb14-64c7-7cad-8262-b9e88c12b909
+DELETE {{Patients_HostAddress}}/019a1019-55f4-712d-ada9-c7ace137e852
 Content-Type: application/json
 
 ###
