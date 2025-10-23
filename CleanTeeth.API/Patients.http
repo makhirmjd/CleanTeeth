@@ -1,6 +1,6 @@
 @Patients_HostAddress = http://localhost:5123/api/patients
 
-GET {{Patients_HostAddress}}?page=1&recordsPerPage=10&email=felipe@example.com
+GET {{Patients_HostAddress}}?page=1&recordsPerPage=10
 ACCEPT: application/json
 
 
@@ -22,11 +22,12 @@ Content-Type: application/json
 
 ###
 
-PUT {{Patients_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+PUT {{Patients_HostAddress}}/019a00e7-d84d-7f5c-bb06-30081320e0a5
 Content-Type: application/json
 
 {
-  "name": "Dental Office A - Updated"
+  "name": "Felipe Gavilan",
+  "email": "felipe@example.com"
 }
 
 ###

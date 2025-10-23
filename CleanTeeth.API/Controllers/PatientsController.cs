@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.Patients.Commands.CreatePatient;
+using CleanTeath.Application.Features.Patients.Commands.UpdatePatient;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientDetail;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientList;
 using CleanTeath.Application.Utilities.Mediator;
@@ -38,5 +39,18 @@ public class PatientsController(IMediator mediator) : ControllerBase
         };
         Guid id = await mediator.Send(command);
         return Ok(id);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> Put(Guid id, UpdatePatientDto updatePatientDto)
+    {
+        var command = new UpdatePatientCommand
+        {
+            Id = id,
+            Name = updatePatientDto.Name,
+            Email = updatePatientDto.Email
+        };
+        await mediator.Send(command);
+        return NoContent();
     }
 }
