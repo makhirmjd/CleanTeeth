@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Features.Patients.Commands.CreatePatient;
+using CleanTeath.Application.Features.Patients.Commands.DeletePatient;
 using CleanTeath.Application.Features.Patients.Commands.UpdatePatient;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientDetail;
 using CleanTeath.Application.Features.Patients.Queries.GetPatientList;
@@ -50,6 +51,14 @@ public class PatientsController(IMediator mediator) : ControllerBase
             Name = updatePatientDto.Name,
             Email = updatePatientDto.Email
         };
+        await mediator.Send(command);
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var command = new DeletePatientCommand { Id = id };
         await mediator.Send(command);
         return NoContent();
     }
