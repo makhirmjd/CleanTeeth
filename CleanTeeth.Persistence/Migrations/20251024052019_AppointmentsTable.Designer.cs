@@ -5,6 +5,7 @@ using CleanTeeth.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CleanTeeth.Persistence.Migrations
 {
     [DbContext(typeof(CleanTeethDbContext))]
-    partial class CleanTeethDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251024052019_AppointmentsTable")]
+    partial class AppointmentsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
