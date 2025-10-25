@@ -14,4 +14,13 @@ public class AppointmentRepository(CleanTeethDbContext context) : Repository<App
             a.DentistId == dentistId && a.Status == AppointmentStatus.Scheduled && 
             start < a.TimeInterval.End && end > a.TimeInterval.Start);
     }
+
+    new public async Task<Appointment?> GetById(Guid id)
+    {
+        return await context.Appointments
+            .Include(a => a.Patient)
+            .Include(a => a.Dentist)
+            .Include(a => a.DentalOffice)
+            .FirstOrDefaultAsync(a => a.Id == id);
+    }
 }
