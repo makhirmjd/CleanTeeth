@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CleanTeeth.Domain\CleanTeeth.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Appointments\Queries\" />
+  </ItemGroup>
+
 </Project>
