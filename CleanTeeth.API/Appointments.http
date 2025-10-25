@@ -1,0 +1,41 @@
+@Appointments_HostAddress = http://localhost:5123/api/appointments
+
+GET {{Appointments_HostAddress}}?page=1&recordsPerPage=10
+ACCEPT: application/json
+
+
+###
+
+GET {{Appointments_HostAddress}}/019a0cc9-5ad2-7834-951e-12deb189a75a
+ACCEPT: application/json
+
+
+###
+
+POST {{Appointments_HostAddress}}
+Content-Type: application/json
+
+{
+  "patientId": "019a0cc8-7dfb-7a01-aeed-17608530d817",
+  "dentistId": "019a1d1d-9aec-7714-9210-0c3dccbd3a86",
+  "dentalOfficeId": "0199f3ac-667c-7b64-9c4c-0e0cb9cabf6f",
+  "startDate": "2025-11-01T09:30:00",
+  "endDate": "2025-11-01T09:45:00"
+}
+
+###
+
+PUT {{Appointments_HostAddress}}/019a00e7-d84d-7f5c-bb06-30081320e0a5
+Content-Type: application/json
+
+{
+  "name": "Felipe Gavilan",
+  "email": "felipe@example.com"
+}
+
+###
+
+DELETE {{Appointments_HostAddress}}/019a1019-55f4-712d-ada9-c7ace137e852
+Content-Type: application/json
+
+###

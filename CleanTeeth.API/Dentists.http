@@ -16,7 +16,7 @@ POST {{Dentists_HostAddress}}
 Content-Type: application/json
 
 {
-  "name": "Dentist for manipulation",
+  "name": "Dentist A",
   "email": "dentist@example.com"
 }
 
