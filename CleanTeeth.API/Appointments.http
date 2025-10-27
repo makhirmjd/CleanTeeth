@@ -1,6 +1,6 @@
 @Appointments_HostAddress = http://localhost:5123/api/appointments
 
-GET {{Appointments_HostAddress}}?page=1&recordsPerPage=10
+GET {{Appointments_HostAddress}}?dentalOfficeId=0199F3AC-667C-7B64-9C4C-0E0CB9CABF6F&startDate=2025-11-01&endDate=2025-12-31
 ACCEPT: application/json
 
 
@@ -16,11 +16,11 @@ POST {{Appointments_HostAddress}}
 Content-Type: application/json
 
 {
-  "patientId": "019a0cc8-7dfb-7a01-aeed-17608530d817",
-  "dentistId": "019a1d1d-9aec-7714-9210-0c3dccbd3a86",
-  "dentalOfficeId": "0199f3ac-667c-7b64-9c4c-0e0cb9cabf6f",
-  "startDate": "2025-11-01T09:30:00",
-  "endDate": "2025-11-01T09:45:00"
+  "patientId": "019a0cc8-2de2-7962-bfdb-3e57c392fd33",
+  "dentistId": "019a2382-5556-7983-9bac-da2e2487cd2c",
+  "dentalOfficeId": "0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4",
+  "startDate": "2025-12-03T09:30:00",
+  "endDate": "2025-12-03T09:45:00"
 }
 
 ###

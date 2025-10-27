@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Contracts.Repositories;
+using CleanTeath.Application.Features.Appointments.Queries.GetAppointmentsList;
 using CleanTeeth.Domain.Entities;
 using CleanTeeth.Domain.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -22,5 +23,33 @@ public class AppointmentRepository(CleanTeethDbContext context) : Repository<App
             .Include(a => a.Dentist)
             .Include(a => a.DentalOffice)
             .FirstOrDefaultAsync(a => a.Id == id);
+    }
+
+    public async Task<IEnumerable<Appointment>> GetFiltered(AppointmentsFilterDto appointmentsFilterDto)
+    {
+        IQueryable<Appointment> queryable = context.Appointments
+            .Include(a => a.Patient)
+            .Include(a => a.Dentist)
+            .Include(a => a.DentalOffice)
+            .AsQueryable();
+
+        if (appointmentsFilterDto.PatientId is not null)
+        {
+            queryable = queryable.Where(a => a.PatientId == appointmentsFilterDto.PatientId);
+        }
+
+        if (appointmentsFilterDto.DentistId is not null)
+        {
+            queryable = queryable.Where(a => a.DentistId == appointmentsFilterDto.DentistId);
+        }
+
+        if (appointmentsFilterDto.DentalOfficeId is not null)
+        {
+            queryable = queryable.Where(a => a.DentalOfficeId == appointmentsFilterDto.DentalOfficeId);
+        }
+
+        return await queryable.Where(a => a.TimeInterval.Start >= appointmentsFilterDto.StartDate && a.TimeInterval.End <= appointmentsFilterDto.EndDate)
+            .OrderBy(a => a.TimeInterval.Start)
+            .ToListAsync();
     }
 }
