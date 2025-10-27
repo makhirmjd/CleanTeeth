@@ -1,6 +1,7 @@
 ﻿using CleanTeath.Application.Contracts.Persistence;
 using CleanTeath.Application.Contracts.Repositories;
 using CleanTeath.Application.Exceptions;
+using CleanTeath.Application.Notifications;
 using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.Domain.Entities;
 using CleanTeeth.Domain.ValueObjects;
@@ -8,7 +9,7 @@ using CleanTeeth.Domain.ValueObjects;
 namespace CleanTeath.Application.Features.Appointments.Commands.CreateAppointment;
 
 public class CreateAppointmentCommandHandler(IAppointmentRepository repository, 
-    IUnitOfWork unitOfWork) : IRequestHandler<CreateAppointmentCommand, Guid>
+    IUnitOfWork unitOfWork, INotifications notifications) : IRequestHandler<CreateAppointmentCommand, Guid>
 {
     public async Task<Guid> Handle(CreateAppointmentCommand request)
     {
@@ -26,12 +27,24 @@ public class CreateAppointmentCommandHandler(IAppointmentRepository repository,
         {
             Appointment result = await repository.Add(appointment);
             await unitOfWork.Commit();
+            await DispatchEmail(result);
             return result.Id;
         }
         catch
         {
             await unitOfWork.Rollback();
             throw;
+        }
+    }
+
+    private async Task DispatchEmail(Appointment appointment)
+    {
+        try
+        {
+            await notifications.SendAppointmentConfirmation(appointment.ToDto());
+        }
+        catch
+        {
         }
     }
 }
