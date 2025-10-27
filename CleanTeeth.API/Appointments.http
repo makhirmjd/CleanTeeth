@@ -1,12 +1,12 @@
 @Appointments_HostAddress = http://localhost:5123/api/appointments
 
-GET {{Appointments_HostAddress}}?dentalOfficeId=0199F3AC-667C-7B64-9C4C-0E0CB9CABF6F&startDate=2025-11-01&endDate=2025-12-31
+GET {{Appointments_HostAddress}}?dentalOfficeId=0199ED58-CD55-79D5-83BC-553367E958C8&startDate=2025-11-01&endDate=2025-12-31
 ACCEPT: application/json
 
 
 ###
 
-GET {{Appointments_HostAddress}}/019A1D22-27EF-79A1-870F-6A92822DC0ED
+GET {{Appointments_HostAddress}}/019a24da-124d-7818-9b20-f7bb5b0594d4
 ACCEPT: application/json
 
 
@@ -16,22 +16,16 @@ POST {{Appointments_HostAddress}}
 Content-Type: application/json
 
 {
-  "patientId": "019a0cc8-2de2-7962-bfdb-3e57c392fd33",
-  "dentistId": "019a2382-5556-7983-9bac-da2e2487cd2c",
-  "dentalOfficeId": "0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4",
+  "patientId": "019A0611-08B0-7A5B-97A8-59895027B393",
+  "dentistId": "019A1155-F97B-710D-8AC7-73D19B23C849",
+  "dentalOfficeId": "0199ED58-CD55-79D5-83BC-553367E958C8",
   "startDate": "2025-12-03T09:30:00",
   "endDate": "2025-12-03T09:45:00"
 }
 
 ###
 
-PUT {{Appointments_HostAddress}}/019a00e7-d84d-7f5c-bb06-30081320e0a5
-Content-Type: application/json
-
-{
-  "name": "Felipe Gavilan",
-  "email": "felipe@example.com"
-}
+POST {{Appointments_HostAddress}}/019A24F4-634F-7C93-8380-000B14A8AE2B/complete
 
 ###
 
