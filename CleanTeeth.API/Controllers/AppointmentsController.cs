@@ -1,4 +1,5 @@
-﻿using CleanTeath.Application.Features.Appointments.Commands.CreateAppointment;
+﻿using CleanTeath.Application.Features.Appointments.Commands.CompleteAppointment;
+using CleanTeath.Application.Features.Appointments.Commands.CreateAppointment;
 using CleanTeath.Application.Features.Appointments.Queries.GetAppointmentDetail;
 using CleanTeath.Application.Features.Appointments.Queries.GetAppointmentsList;
 using CleanTeath.Application.Utilities.Mediator;
@@ -39,5 +40,13 @@ public class AppointmentsController(IMediator mediator) : ControllerBase
         };
         Guid id = await mediator.Send(command);
         return Ok(id);
+    }
+
+    [HttpPost("{id:guid}/complete")]
+    public async Task<IActionResult> Complete(Guid id)
+    {
+        var command = new CompleteAppointmentCommand { Id = id };
+        await mediator.Send(command);
+        return NoContent();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CleanTeath.Application.Exceptions;
+using CleanTeeth.Domain.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -21,10 +22,15 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
 	private static Task HandleException(HttpContext context, Exception exception)
 	{
 		context.Response.ContentType = "application/json";
-		var result = 
-			exception is CustomValidationException cve ? JsonSerializer.Serialize(cve.ValidationErrors) : string.Empty;
 
-		HttpStatusCode httpStatusCode = exception switch
+		string result = exception switch
+		{
+			CustomValidationException cve => JsonSerializer.Serialize(cve.ValidationErrors),
+			BusinessRuleException bre => JsonSerializer.Serialize(bre.Message),
+			_ => string.Empty
+		};
+
+        HttpStatusCode httpStatusCode = exception switch
 		{
 			NotFoundException => HttpStatusCode.NotFound,
 			CustomValidationException => HttpStatusCode.BadRequest,
