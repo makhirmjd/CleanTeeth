@@ -22,12 +22,12 @@ Content-Type: application/json
 
 ###
 
-PUT {{Dentists_HostAddress}}/019a1156-c850-7601-8669-bdde02d23e82
+PUT {{Dentists_HostAddress}}/019a2382-5556-7983-9bac-da2e2487cd2c
 Content-Type: application/json
 
 {
-  "name": "Dentist for manip",
-  "email": "dentist2@example.com"
+  "name": "Robert Simmons",
+  "email": "simmons@example.com"
 }
 
 ###
