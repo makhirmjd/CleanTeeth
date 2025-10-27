@@ -29,6 +29,10 @@ POST {{Appointments_HostAddress}}/019A24F4-634F-7C93-8380-000B14A8AE2B/complete
 
 ###
 
+POST {{Appointments_HostAddress}}/019A24E6-1CEE-7673-A5C0-44F69451F48B/cancel
+
+###
+
 DELETE {{Appointments_HostAddress}}/019a1019-55f4-712d-ada9-c7ace137e852
 Content-Type: application/json
 
