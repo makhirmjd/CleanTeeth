@@ -5,12 +5,16 @@ using CleanTeeth.Persistence;
 using CleanTeeth.Security;
 using CleanTeeth.Security.Models;
 using CleanTeeth.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new AuthorizeFilter());
+});
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();

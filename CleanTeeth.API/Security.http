@@ -1,4 +1,4 @@
-@Security_HostAddress = http://localhost:5123
+@Security_HostAddress = https://localhost:7096
 
 POST {{Security_HostAddress}}/register
 Content-Type: application/json
