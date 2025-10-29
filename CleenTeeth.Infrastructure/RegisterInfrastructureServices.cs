@@ -9,6 +9,7 @@ public static class RegisterInfrastructureServices
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
         services.AddScoped<INotifications, EmailService>();
+        services.AddHttpClient();
         return services;
     }
 }

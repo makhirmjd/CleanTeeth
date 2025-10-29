@@ -23,18 +23,23 @@ public class CreateAppointmentCommandHandler(IAppointmentRepository repository,
         TimeInterval timeInterval = new(request.StartDate, request.EndDate);
         Appointment appointment = new(request.PatientId, request.DentistId, request.DentalOfficeId, timeInterval);
 
+        Guid? id = default;
+
         try
         {
             Appointment result = await repository.Add(appointment);
             await unitOfWork.Commit();
-            await DispatchEmail(result);
-            return result.Id;
+            id = result.Id;
         }
         catch
         {
             await unitOfWork.Rollback();
             throw;
         }
+
+        Appointment appointmentDb = await repository.GetById(id.Value) ?? throw new NotFoundException();
+        await DispatchEmail(appointmentDb);
+        return id.Value;
     }
 
     private async Task DispatchEmail(Appointment appointment)
