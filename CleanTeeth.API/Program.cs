@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add(new AuthorizeFilter());
+    options.Filters.Add(new AuthorizeFilter("isadmin"));
 });
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
