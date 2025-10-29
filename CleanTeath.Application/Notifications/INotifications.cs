@@ -3,4 +3,5 @@
 public interface INotifications
 {
     Task SendAppointmentConfirmation(AppointmentConfirmationDto appointmentConfirmationDto);
+    Task SendAppointmentReminder(AppointmentReminderDto appointmentReminderDto);
 }

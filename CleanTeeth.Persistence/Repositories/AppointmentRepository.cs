@@ -1,5 +1,5 @@
 ﻿using CleanTeath.Application.Contracts.Repositories;
-using CleanTeath.Application.Features.Appointments.Queries.GetAppointmentsList;
+using CleanTeath.Application.Contracts.Repositories.Models;
 using CleanTeeth.Domain.Entities;
 using CleanTeeth.Domain.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +46,11 @@ public class AppointmentRepository(CleanTeethDbContext context) : Repository<App
         if (appointmentsFilterDto.DentalOfficeId is not null)
         {
             queryable = queryable.Where(a => a.DentalOfficeId == appointmentsFilterDto.DentalOfficeId);
+        }
+
+        if (appointmentsFilterDto.AppointmentStatus is not null)
+        {
+            queryable = queryable.Where(x => x.Status == appointmentsFilterDto.AppointmentStatus);
         }
 
         return await queryable.Where(a => a.TimeInterval.Start >= appointmentsFilterDto.StartDate && a.TimeInterval.End <= appointmentsFilterDto.EndDate)
