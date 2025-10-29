@@ -1,6 +1,7 @@
 ﻿using CleanTeath.Application.Contracts.Persistence;
 using CleanTeath.Application.Contracts.Repositories;
 using CleanTeath.Application.Exceptions;
+using CleanTeath.Application.Notifications;
 using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.Domain.Entities;
 using CleanTeeth.Domain.ValueObjects;
@@ -8,7 +9,7 @@ using CleanTeeth.Domain.ValueObjects;
 namespace CleanTeath.Application.Features.Appointments.Commands.CreateAppointment;
 
 public class CreateAppointmentCommandHandler(IAppointmentRepository repository, 
-    IUnitOfWork unitOfWork) : IRequestHandler<CreateAppointmentCommand, Guid>
+    IUnitOfWork unitOfWork, INotifications notifications) : IRequestHandler<CreateAppointmentCommand, Guid>
 {
     public async Task<Guid> Handle(CreateAppointmentCommand request)
     {
@@ -22,16 +23,33 @@ public class CreateAppointmentCommandHandler(IAppointmentRepository repository,
         TimeInterval timeInterval = new(request.StartDate, request.EndDate);
         Appointment appointment = new(request.PatientId, request.DentistId, request.DentalOfficeId, timeInterval);
 
+        Guid? id = default;
+
         try
         {
             Appointment result = await repository.Add(appointment);
             await unitOfWork.Commit();
-            return result.Id;
+            id = result.Id;
         }
         catch
         {
             await unitOfWork.Rollback();
             throw;
+        }
+
+        Appointment appointmentDb = await repository.GetById(id.Value) ?? throw new NotFoundException();
+        await DispatchEmail(appointmentDb);
+        return id.Value;
+    }
+
+    private async Task DispatchEmail(Appointment appointment)
+    {
+        try
+        {
+            await notifications.SendAppointmentConfirmation(appointment.ToDto());
+        }
+        catch
+        {
         }
     }
 }

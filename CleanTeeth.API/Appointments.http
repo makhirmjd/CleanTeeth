@@ -16,11 +16,11 @@ POST {{Appointments_HostAddress}}
 Content-Type: application/json
 
 {
-  "patientId": "019A0611-08B0-7A5B-97A8-59895027B393",
-  "dentistId": "019A1155-F97B-710D-8AC7-73D19B23C849",
-  "dentalOfficeId": "0199ED58-CD55-79D5-83BC-553367E958C8",
-  "startDate": "2025-12-03T09:30:00",
-  "endDate": "2025-12-03T09:45:00"
+  "patientId": "019a0cc8-7dfb-7a01-aeed-17608530d817",
+  "dentistId": "019a2382-5556-7983-9bac-da2e2487cd2c",
+  "dentalOfficeId": "0199f3ac-667c-7b64-9c4c-0e0cb9cabf6f",
+  "startDate": "2025-12-04T09:30:00",
+  "endDate": "2025-12-04T09:45:00"
 }
 
 ###
