@@ -1,4 +1,5 @@
-﻿using CleanTeath.Application.Utilities.Mediator;
+﻿using CleanTeath.Application.Contracts.Repositories.Models;
+using CleanTeath.Application.Utilities.Mediator;
 
 namespace CleanTeath.Application.Features.Appointments.Queries.GetAppointmentsList;
 

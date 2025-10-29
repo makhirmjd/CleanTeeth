@@ -8,10 +8,14 @@ namespace CleenTeeth.Infrastructure.Notifications;
 
 public class EmailService(IConfiguration configuration, IHttpClientFactory httpClientFactory) : INotifications
 {
+    private readonly string sender = 
+        configuration.GetValue<string>("EMAIL_CONFIGURATIONS:Sender") ?? throw new ArgumentException("Configuration not found!");
+    private readonly string hostUrl = 
+        configuration.GetValue<string>("EMAIL_CONFIGURATIONS:HostUrl") ?? throw new ArgumentException("Configuration not found!");
+    private readonly HttpClient client = httpClientFactory.CreateClient();
+
     public async Task SendAppointmentConfirmation(AppointmentConfirmationDto appointmentConfirmationDto)
     {
-        string sender = configuration.GetValue<string>("EMAIL_CONFIGURATIONS:Sender") ?? throw new ArgumentException("Configuration not found!");
-        string hostUrl = configuration.GetValue<string>("EMAIL_CONFIGURATIONS:HostUrl") ?? throw new ArgumentException("Configuration not found!");
         string subject = "Appointment Confirmation - Clean Teeth";
         string message = $"""
             Dear, {appointmentConfirmationDto.Patient},
@@ -23,7 +27,24 @@ public class EmailService(IConfiguration configuration, IHttpClientFactory httpC
             Clean Teeth team
             """;
         EmailDto emailDto = new() { Sender = sender, Receipient = appointmentConfirmationDto.PatientEmail, Body = message, Subject = subject };
-        HttpClient client = httpClientFactory.CreateClient();
+        
+        await client.PostAsJsonAsync(hostUrl, emailDto);
+    }
+
+    public async Task SendAppointmentReminder(AppointmentReminderDto appointmentReminderDto)
+    {
+        string subject = "Appointment Reminder - Clean Teeth";
+        string message = $"""
+            Dear, {appointmentReminderDto.Patient},
+
+            This is a reminder for your appointment with Dr. {appointmentReminderDto.Dentist} on {appointmentReminderDto.Date.ToString("f", new CultureInfo("en-NG"))} in the office {appointmentReminderDto.DentalOffice}
+
+            We will be waiting for you.
+
+            Clean Teeth team
+            """;
+        EmailDto emailDto = new() { Sender = sender, Receipient = appointmentReminderDto.PatientEmail, Body = message, Subject = subject };
+
         await client.PostAsJsonAsync(hostUrl, emailDto);
     }
 }

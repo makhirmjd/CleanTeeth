@@ -19,8 +19,8 @@ Content-Type: application/json
   "patientId": "019a0cc8-7dfb-7a01-aeed-17608530d817",
   "dentistId": "019a2382-5556-7983-9bac-da2e2487cd2c",
   "dentalOfficeId": "0199f3ac-667c-7b64-9c4c-0e0cb9cabf6f",
-  "startDate": "2025-12-04T09:30:00",
-  "endDate": "2025-12-04T09:45:00"
+  "startDate": "2025-10-30T09:30:00",
+  "endDate": "2025-10-30T09:45:00"
 }
 
 ###

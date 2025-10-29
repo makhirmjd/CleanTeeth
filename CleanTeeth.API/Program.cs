@@ -1,4 +1,5 @@
 using CleanTeath.Application;
+using CleanTeeth.API.Jobs;
 using CleanTeeth.API.Middlewares;
 using CleanTeeth.Persistence;
 using CleenTeeth.Infrastructure;
@@ -11,6 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddPersistenceServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
+
+// Jobs
+builder.Services.AddHostedService<AppointmentReminderJob>();
 
 var app = builder.Build();
 
