@@ -1,8 +1,8 @@
 ﻿using CleanTeath.Application.Notifications;
-using CleenTeeth.Infrastructure.Notifications;
+using CleanTeeth.Infrastructure.Notifications;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CleenTeeth.Infrastructure;
+namespace CleanTeeth.Infrastructure;
 
 public static class RegisterInfrastructureServices
 {

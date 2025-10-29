@@ -1,10 +1,10 @@
 ﻿using CleanTeath.Application.Notifications;
-using CleenTeeth.Infrastructure.Notifications.Dtos;
+using CleanTeeth.Infrastructure.Notifications.Dtos;
 using Microsoft.Extensions.Configuration;
 using System.Globalization;
 using System.Net.Http.Json;
 
-namespace CleenTeeth.Infrastructure.Notifications;
+namespace CleanTeeth.Infrastructure.Notifications;
 
 public class EmailService(IConfiguration configuration, IHttpClientFactory httpClientFactory) : INotifications
 {

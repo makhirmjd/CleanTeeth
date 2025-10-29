@@ -1,4 +1,4 @@
-﻿namespace CleenTeeth.Infrastructure.Notifications.Dtos
+﻿namespace CleanTeeth.Infrastructure.Notifications.Dtos
 {
     public class EmailDto
     {

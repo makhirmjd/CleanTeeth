@@ -1,0 +1,23 @@
+@Security_HostAddress = http://localhost:5123
+
+POST {{Security_HostAddress}}/register
+Content-Type: application/json
+
+{
+  "email": "makhirmjd@gmail.com",
+  "password": "Makhirmjd@13720bp"
+}
+
+###
+
+POST {{Security_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "makhirmjd@gmail.com",
+  "password": "Makhirmjd@13720bp"
+}
+
+###
+
+
