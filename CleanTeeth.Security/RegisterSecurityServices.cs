@@ -11,7 +11,8 @@ public static class RegisterSecurityServices
     {
         services.AddAuthentication(IdentityConstants.BearerScheme).AddBearerToken(IdentityConstants.BearerScheme);
 
-        services.AddAuthorization();
+        services.AddAuthorizationBuilder()
+            .AddPolicy("isadmin", policy => policy.RequireClaim("isadmin"));
 
         services.AddDbContext<CleanTeethSecurityDbContext>(options => options.UseSqlServer("name=CleanTeethConnectionString"));
 
