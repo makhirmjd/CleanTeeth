@@ -1,4 +1,4 @@
-@Patients_HostAddress = http://localhost:5123/api/patients
+@Patients_HostAddress = https://localhost:7096/api/patients
 
 GET {{Patients_HostAddress}}?page=1&recordsPerPage=10
 ACCEPT: application/json
