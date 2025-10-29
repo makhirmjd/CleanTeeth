@@ -17,7 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanTeath.Application\CleanTeath.Application.csproj" />
     <ProjectReference Include="..\CleanTeeth.Persistence\CleanTeeth.Persistence.csproj" />
-    <ProjectReference Include="..\CleenTeeth.Infrastructure\CleenTeeth.Infrastructure.csproj" />
+    <ProjectReference Include="..\CleanTeeth.Security\CleanTeeth.Security.csproj" />
+    <ProjectReference Include="..\CleenTeeth.Infrastructure\CleanTeeth.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
