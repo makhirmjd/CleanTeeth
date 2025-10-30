@@ -1,4 +1,4 @@
-﻿namespace CleanTeeth.Domain.Entities.Enums;
+﻿namespace CleanTeeth.Domain.Enums;
 
 public enum AppointmentStatus
 {

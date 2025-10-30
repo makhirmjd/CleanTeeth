@@ -1,9 +1,10 @@
-﻿using CleanTeeth.Domain.Entities.Enums;
+﻿using CleanTeeth.Domain.Common;
+using CleanTeeth.Domain.Enums;
 using CleanTeeth.Domain.ValueObjects;
 
 namespace CleanTeeth.Domain.Entities;
 
-public class Appointment
+public class Appointment : Auditable
 {
     public Guid Id { get; private set; }
     public Guid PatientId { get; private set; }

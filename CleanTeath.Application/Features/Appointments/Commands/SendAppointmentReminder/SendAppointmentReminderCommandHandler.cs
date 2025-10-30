@@ -3,7 +3,7 @@ using CleanTeath.Application.Contracts.Repositories.Models;
 using CleanTeath.Application.Notifications;
 using CleanTeath.Application.Utilities.Mediator;
 using CleanTeeth.Domain.Entities;
-using CleanTeeth.Domain.Entities.Enums;
+using CleanTeeth.Domain.Enums;
 
 namespace CleanTeath.Application.Features.Appointments.Commands.SendAppointmentReminder;
 

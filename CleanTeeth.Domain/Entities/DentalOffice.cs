@@ -1,6 +1,8 @@
-﻿namespace CleanTeeth.Domain.Entities;
+﻿using CleanTeeth.Domain.Common;
 
-public class DentalOffice
+namespace CleanTeeth.Domain.Entities;
+
+public class DentalOffice : Auditable
 {
     public Guid Id { get; private set; }
     public string Name { get; private set; } = default!;

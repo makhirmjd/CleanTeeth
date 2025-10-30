@@ -1,4 +1,4 @@
-﻿using CleanTeeth.Domain.Entities.Enums;
+﻿using CleanTeeth.Domain.Enums;
 
 namespace CleanTeath.Application.Contracts.Repositories.Models;
 
