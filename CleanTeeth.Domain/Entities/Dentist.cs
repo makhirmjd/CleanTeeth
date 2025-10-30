@@ -1,8 +1,9 @@
-﻿using CleanTeeth.Domain.ValueObjects;
+﻿using CleanTeeth.Domain.Common;
+using CleanTeeth.Domain.ValueObjects;
 
 namespace CleanTeeth.Domain.Entities;
 
-public class Dentist
+public class Dentist : Auditable
 {
     public Guid Id { get; private set; }
     public string Name { get; private set; } = default!;

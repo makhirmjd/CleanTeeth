@@ -1,7 +1,7 @@
 ﻿using CleanTeath.Application.Contracts.Repositories;
 using CleanTeath.Application.Contracts.Repositories.Models;
 using CleanTeeth.Domain.Entities;
-using CleanTeeth.Domain.Entities.Enums;
+using CleanTeeth.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanTeeth.Persistence.Repositories;

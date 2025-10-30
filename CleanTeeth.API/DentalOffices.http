@@ -1,5 +1,5 @@
 @DentalOffices_HostAddress = https://localhost:7096/api/dentalOffices
-@Bearer_Token = Bearer CfDJ8Jd2jIUbWb5FgQHXdzbg4q1MaAIM6clEO7-r0_HHoIZ4QRH3_QO2-mRMIWFv4JdaOC5HaHMXrH6YBpXdfKq3y3HtwZhyslsXMBNqjUQZSpSaIdyDiDNCGbRoQyauzIx37pwpwB9W5RECYz5XMTVJK16dzRdGe9rIPsuvgqDkMJzsI6XwQ134h4IMrDcFNd6qgxA7lVtUixnmdiyqkhDDu_uZ2hkAxfWyvlgq6kbkUOg2FL3KuJf4iBB7RG_vwdcnP6OYRnYmdA0tpo3VtXKSEZIhB8vPeDbCNC_5blBrtHfSQOXI5yO7GOs0WqczfKaE4BOjrOkkVgKgja7v6_wAuwUsKXR-NLIT4KchbKSmVJ4AeOf4OZ3yOSUt5zWXch9WfBbQn2mXbaA_xC7eb1AslxThlkG1t-8RUtd6E8sZ337YJWpgKslwuf0H6LpNedky_poknQmOCqc-gHeIpBG8ZEg3nW7SB3r512XOzJQUBXg3k_Ry4ryFHJdajOXEptHpdOTuH0x8G7WCpE-0WiN4wAfm_rWrLgZuZsQtZ_5BxdQBacZ7QkmbxN8AKG1pkR3pn_3b0wkZnTtH6V6z67Xt22aIq4Zf4rGg0lIijxGaIQPXtNGlDJl92WC2NziBG2yozNQuEAB_P2xfg2WAB-clk5P9eqy3H3FfibWIej7GYmi7NNGmVhd2xIvhqBHY2oMypyZpEEgOCDCb6ZdK_HSdRZWq-ZsDRf7XeG5LTvAFxSXa
+@Bearer_Token = Bearer CfDJ8Jd2jIUbWb5FgQHXdzbg4q39AtAh0c-b_y7bzI3JgtNIz3TJO-90v5jIh8nxDBo6BktflhbBCUhBBBbq39F3-N9wK4qcNaxbneFMCNs-3kJF64TyQ8vzQxUXyZsCCldRC4drX0JlUwHKXsNh_HFQhLGtCXg3piTMYqqueysktN_YMUXkQO8ELrGNYUZbSUnpq5Zz6609cYITHzKi3G1B6T8-Lpobctn2Yq3Yn5Be0o5qszyKmGbQf_Cntp1ZXEE-Vq2kA9mY_sa7PaeLdK5NjK6LDkR6473hQM-CLuOYBcVGm7vnkoW4909R_SKPI49FGPQHzrvy215Px5cLf0h7rKXcGgKlf2i7x65PlL_-rgd5pLF_WhuClhAmkgZiIUj6-t_tjfqJ6-PQXUxfCHsO-lZAy-RLC60MSNY-uqYf3HA_5p232paXjN9GceANGf6HYCvXnqPojgSI83YSxIE3y-gXGIA9tXuuuTRjksHizdZ9zlEtnHvyJBDibd0srwQqQc-QEbEiUWlsF1soImWUcvh7fxNCfVXsNxtw74WDnDrpf4PIZiICEVHIChcu-nMSXdkMqKKWIJHQs9thTjSGIKRlin81BdspwuLhVidP2sZma-EbapFkNlRfIJELXasLLWkU8UF536ks3s75pqhPT5Itl9wa4SWf7vy-GVMDgckilQN0LkAaflJhgtmJsk8V2MVEqt3P0sulK602E7bkBybAQq_ibaxvpmro2KXh7V8n
 
 GET {{DentalOffices_HostAddress}}
 ACCEPT: application/json
@@ -16,19 +16,21 @@ Authorization: {{Bearer_Token}}
 ###
 
 POST {{DentalOffices_HostAddress}}
+Authorization: {{Bearer_Token}}
 Content-Type: application/json
 
 {
-  "name": "Dental Office C"
+  "name": "Dental Office D"
 }
 
 ###
 
-PUT {{DentalOffices_HostAddress}}/0199f3ab-c5ce-7ab7-a4f2-3813f7144cd4
+PUT {{DentalOffices_HostAddress}}/019a3420-21f4-7bec-b7eb-a15d1362f06f
+Authorization: {{Bearer_Token}}
 Content-Type: application/json
 
 {
-  "name": "Dental Office A - Updated"
+  "name": "Dental Office D - Updated"
 }
 
 ###
