@@ -1,4 +1,6 @@
-﻿using CleanTeeth.Security.Models;
+﻿using CleanTeath.Application.Contracts.Security;
+using CleanTeeth.Security.Models;
+using CleanTeeth.Security.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,5 +21,8 @@ public static class RegisterSecurityServices
         services.AddIdentityCore<User>()
             .AddEntityFrameworkStores<CleanTeethSecurityDbContext>()
             .AddApiEndpoints();
+
+        services.AddHttpContextAccessor();
+        services.AddTransient<IUserService, UserService>();
     }
 }
